@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { createUserService, getUsersService, getUserByIdService } from '../services/userService';
-import { UserDTO } from '../../types/user';
+import { createUserService, getUsersService, getUserByIdService, createBasharService } from './services/userService';
+import { BasharDTO, UserDTO } from '../types/user';
 
 export const createUser = async (req: Request, res: Response) => {
   try {
@@ -11,6 +11,16 @@ export const createUser = async (req: Request, res: Response) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export const createBashar = async (req: Request, res: Response) => {
+    try {
+      const data: BasharDTO = req.body;
+      const user = await createBasharService(data);
+      res.status(201).json(user);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  };
 
 export const getUsers = async (req: Request, res: Response) => {
   try {

@@ -6,6 +6,16 @@ export interface UserDTO {
   username?: string;
 }
 
+export interface BasharDTO {
+    name: string;
+    email: string;
+    phonenumber: string;
+  }
+
+  export interface Bashar extends BasharDTO {
+    id: number;
+  }
+
 export interface User extends UserDTO {
   id: number;
   createdAt: Date;

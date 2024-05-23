@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { createCommentService, getCommentsService } from '../services/commentService';
-import { CommentDTO } from '../../types/comment';
+import { createCommentService, getCommentByIdService, getCommentsService } from '../services/commentService';
+import { CommentDTO, Comment } from '../../types/comment';
 
 export const createComment = async (req: Request, res: Response) => {
   try {
@@ -21,15 +21,15 @@ export const getComments = async (req: Request, res: Response) => {
   }
 };
 
-// export const getCommentById = async (req: Request, res: Response) => {
-//   try {
-//     const comment = await getCommentByIdService(Number(req.params.id));
-//     if (comment) {
-//       res.status(200).json(comment);
-//     } else {
-//       res.status(404).json({ error: 'Comment not found' });
-//     }
-//   } catch (error:any) {
-//     res.status(500).json({ error: error.message });
-//   }
-// };
+export const getCommentById = async (req: Request, res: Response) => {
+  try {
+    const comment: Comment | null = await getCommentByIdService(Number(req.params.id));
+    if (comment) {
+      res.status(200).json(comment);
+    } else {
+      res.status(404).json({ error: 'Comment not found' });
+    }
+  } catch (error:any) {
+    res.status(500).json({ error: error.message });
+  }
+};

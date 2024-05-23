@@ -17,8 +17,8 @@ export const getCommentsService = async (): Promise<Comment[]> => {
   return await prisma.comments.findMany();
 };
 
-// export const getCommentByIdService = async (id: number): Promise<Comment | null> => {
-//   return await prisma.comments.findUnique({
-//     where: { id },
-//   });
-// };
+export const getCommentByIdService = async (id: number): Promise<Comment | null> => {
+  return await prisma.comments.findUnique({
+    where: { id },
+  });
+};
