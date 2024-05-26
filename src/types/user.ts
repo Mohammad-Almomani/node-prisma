@@ -4,6 +4,7 @@ export interface UserDTO {
   email: string;
   phoneNumber?: string;
   username?: string;
+  city?: string | null;
 }
 
 export interface BasharDTO {

@@ -14,7 +14,7 @@ model Comments {
   userId    Int
   createdAt DateTime @db.DateTime(0)
   updatedAt DateTime @db.DateTime(0)
-  meta_tags Json?
+  meta_tags Json? @db.Json
   Posts     Posts    @relation(fields: [postId], references: [id], onDelete: Cascade, map: "Comments_ibfk_1")
   Users     Users    @relation(fields: [userId], references: [id], onDelete: Cascade, map: "Comments_ibfk_2")
 
@@ -29,6 +29,7 @@ model Posts {
   userId    Int
   createdAt DateTime   @db.DateTime(0)
   updatedAt DateTime   @db.DateTime(0)
+  category  String?
   Comments  Comments[]
   Users     Users      @relation(fields: [userId], references: [id], onDelete: Cascade, map: "Posts_ibfk_1")
 
@@ -48,6 +49,7 @@ model Users {
   username    String     @default("") @db.VarChar(255)
   createdAt   DateTime   @db.DateTime(0)
   updatedAt   DateTime   @db.DateTime(0)
+  city        String?    @default("") @db.VarChar(255)
   Comments    Comments[]
   Posts       Posts[]
 

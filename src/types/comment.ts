@@ -1,4 +1,5 @@
-// import { JsonValue } from "@prisma/client/runtime/library";
+import { JsonArray, JsonObject, JsonValue } from "@prisma/client/runtime/library";
+import { Prisma } from "@prisma/client"
 
 
 export interface CommentDTO {
@@ -12,4 +13,4 @@ export interface CommentDTO {
     createdAt: Date;
     updatedAt: Date;
   }
-  
+
